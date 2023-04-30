@@ -7,16 +7,17 @@ function AdminLogin() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Name: ${name}`);
+    console.log(`Password: ${password}`);
     console.log(`Email: ${email}`);
   };
 
   return (
-    <div className='container-fluid'>
-    <h2 className='row justify-content-center'>
-        Harvest Login
-    </h2>
-      <div className='row d-flex justify-content-center mx-auto'>
+    <div className='container'>
+      <div className='row d-flex justify-content-center align-items-center min-vh-100'>
+        <div className='col-md-4'>
+        <h2 className='row d-flex justify-content-center'>
+            Harvest Login
+        </h2>
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
               <label>Email:</label>
@@ -28,7 +29,7 @@ function AdminLogin() {
               />
             </div>
             <div className='form-group'>
-              <label>Password : </label>
+              <label>Password</label>
               <input
                 type='text'
                 value={password}
@@ -36,8 +37,11 @@ function AdminLogin() {
                 className='form-control'
               />
             </div>
-            <button type='submit' className='btn btn-primary mt-2'>Submit</button>
+            <div className="d-grid">
+                <button type='submit' className='btn btn-primary mt-3'>Login</button>
+            </div>
           </form>
+        </div>
       </div>
     </div>
   );
