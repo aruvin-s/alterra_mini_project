@@ -1,10 +1,10 @@
-import AdminLogin from './components/AdminLogin'
+import InputPlant from './components/InputPlant'
 
 function App() {
 
   return (
     <>
-      <AdminLogin />
+      <InputPlant />
     </>
   )
 }
