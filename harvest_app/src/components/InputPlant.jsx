@@ -4,6 +4,8 @@ import { collection, addDoc } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore"; 
 import { db, storage } from "../firebase"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
+
 
 function InputPlant() {
   const [plantImage, setPlantImage] = useState('')
@@ -18,6 +20,12 @@ function InputPlant() {
     plantGermination:'',
     plantHarvest:'',
   });
+
+  const navigate = useNavigate();
+  const navigateToList = () => {
+        navigate('/view');
+  };
+
 
   useEffect(()=> {
     const uploadImage = () => {
@@ -65,7 +73,8 @@ function InputPlant() {
     } catch (err) {
       console.log(err);
     }
-    console.log(data)
+
+    alert("Data successfully submitted");
 
     setData({
       plantName:'',
@@ -218,6 +227,7 @@ function InputPlant() {
             </div>
             <div className="d-grid">
                 <button type='submit' className='btn btn-primary mt-3'>Submit</button>
+                <button className="btn btn-success mt-2" onClick={navigateToList}>View all plant</button>
             </div>
           </form>
         </div>
