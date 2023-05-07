@@ -3,15 +3,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { auth } from "../firebase"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useAtom, atom } from 'jotai';
+import logoHarvest from "../assets/PageCover.png"
+import './SignIn.css';
 
-function AdminLogin() {
+export const userAtom = atom(null);
+
+function SignIn() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState(false);
+  const [user, setUser] = useAtom(userAtom);
 
   const navigate = useNavigate();
-  const navigateToList = () => {
+  const navigateToListAdmin = () => {
         navigate('/view');
+  };
+
+  const navigateToListUser = () => {
+    navigate('/list');
   };
 
   const navigateToRegister = () => {
@@ -23,9 +33,15 @@ function AdminLogin() {
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in 
-        const user = userCredential.user;
+        setUser(userCredential.user.email.toLowerCase());
+        const user = userCredential.user.email.toLowerCase();
         console.log(user);
-        navigateToList();
+        if (user == "wiraprathamaalvin@gmail.com") {
+          navigateToListAdmin();
+        }
+        else {
+          navigateToListUser();
+        }
     })
     .catch((error) => {
         setError(true);
@@ -36,7 +52,8 @@ function AdminLogin() {
     <div className='container'>
       <div className='row d-flex justify-content-center align-items-center min-vh-100'>
         <div className='col-md-4'>
-        <h2 className='row d-flex justify-content-center'>
+        <h2 className='row d-flex justify-content-center' id='page-title'>
+        <img src={logoHarvest} id='page-cover' />
             Harvest Login
         </h2>
           <form onSubmit={handleSubmit}>
@@ -74,4 +91,4 @@ function AdminLogin() {
   );
 }
 
-export default AdminLogin;
+export default SignIn;

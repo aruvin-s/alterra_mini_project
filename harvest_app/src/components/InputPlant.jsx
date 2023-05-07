@@ -5,6 +5,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../firebase"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
+import './InputPlant.css'
 
 
 function InputPlant() {
@@ -17,8 +18,8 @@ function InputPlant() {
     plantWatering:0,
     plantSpacing:0,
     plantDepth:0,
-    plantGermination:'',
-    plantHarvest:'',
+    plantGermination:0,
+    plantHarvest:0,
   });
 
   const navigate = useNavigate();
@@ -84,21 +85,23 @@ function InputPlant() {
       plantWatering:'',
       plantSpacing:0,
       plantDepth:0,
-      plantGermination:'',
-      plantHarvest:'',
+      plantGermination:0,
+      plantHarvest:0,
       plantImage:''
     });
   };
 
   return (
     <div className='container'>
-      <div className='row d-flex justify-content-center align-items-center min-vh-100'>
-        <div className='col-md-4'>
-        <h2 className='row d-flex justify-content-center'>
+      <div className='row d-flex justify-content-center align-items-center mt-5'>
+        <div>
+        <h2 className='row d-flex justify-content-center' id="page-title">
             Add New Plant
         </h2>
           <form onSubmit={handleSubmit}>
-            <div className='form-group'>
+          <div className='container d-flex justify-content-between'>
+          <div className='input-left'>
+          <div className='form-group'>
               <label>Plant Name :</label>
               <input
                 type='text'
@@ -175,7 +178,9 @@ function InputPlant() {
                 <span className="input-group-text" id="basic-addon2">inch</span>
               </div>
             </div>
-            <div className='form-group'>
+          </div>
+          <div className='input-right'>
+          <div className='form-group'>
             <label>Planting Spacing :</label>
               <div className='input-group'>
                 <input
@@ -193,7 +198,7 @@ function InputPlant() {
             <label>Plant Germination :</label>
               <div className='input-group'>
                 <input
-                  type='text'
+                  type='number'
                   value={data.plantGermination}
                   onChange={handleChange}
                   className='form-control'
@@ -207,7 +212,7 @@ function InputPlant() {
             <label>Plant Sprout to Harvest :</label>
               <div className='input-group'>
                 <input
-                  type='text'
+                  type='number'
                   value={data.plantHarvest}
                   onChange={handleChange}
                   className='form-control'
@@ -225,6 +230,12 @@ function InputPlant() {
                 className='form-control'
               />
             </div>
+          </div>
+          <div className='image-preview ms-3 '>
+          <p>Image Preview : </p>
+          <img id='plant-image-input' src={data.plantImage}/>
+          </div>
+          </div>
             <div className="d-grid">
                 <button type='submit' className='btn btn-primary mt-3'>Submit</button>
                 <button className="btn btn-success mt-2" onClick={navigateToList}>View all plant</button>

@@ -3,11 +3,11 @@ import { collection, getDocs, deleteDoc, doc, onSnapshot, updateDoc } from "fire
 import { db, storage } from "../firebase"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EditModal from "./EditModal"
-import { atom, useAtom } from 'jotai'
+import './PlantList.css';
+
 
 function PlantList() {
     const [data, setData] = useState([]);
-    const idAtom = atom(data.id);
 
     useEffect(()=> {
         const unsub = onSnapshot(
@@ -41,10 +41,9 @@ function PlantList() {
 
     return (
         <div className='container'>
-            <table className="table table-bordered">
-            <thead className='text-center'>
+            <table className="table table-bordered" id='admin-table'>
+            <thead className='text-center' id='table-head'>
                 <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Plant Name</th>
                 <th scope="col">Plant Season</th>
                 <th scope="col">Plant Sun</th>
@@ -62,7 +61,6 @@ function PlantList() {
                     data.map((data, id) => {
                     return(
                         <tr key={id}>
-                        <td>{data.id}</td>
                         <td>{data.plantName}</td>
                         <td>{data.plantSeason}</td>
                         <td>{data.plantSun}</td>
@@ -73,10 +71,9 @@ function PlantList() {
                         <td>{data.plantHarvest}</td>
                         <td>{data.plantImage && (
                         <img
+                        id='plant-image'
                         src={data.plantImage}
                         alt={data.plantName}
-                        width="100"
-                        height="100"
                         />)}
                         </td>
                         <td className='text-center'>

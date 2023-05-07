@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { auth } from "../firebase"
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import logoHarvest from "../assets/PageCover.png"
+import './SignIn.css';
 
 function RegisterUser() {
   const [password, setPassword] = useState('');
@@ -12,13 +14,13 @@ function RegisterUser() {
   const navigate = useNavigate();
 
   const navigateToLogin = () => {
-    navigate('/');
+    navigate('/login');
   };
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createUserWithEmailAndPasswordW(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
@@ -33,7 +35,8 @@ function RegisterUser() {
     <div className='container'>
       <div className='row d-flex justify-content-center align-items-center min-vh-100'>
         <div className='col-md-4'>
-        <h2 className='row d-flex justify-content-center'>
+        <h2 className='row d-flex justify-content-center' id='page-title'>
+        <img src={logoHarvest} id='page-cover' />
             Harvest Register
         </h2>
           <form onSubmit={handleSubmit}>

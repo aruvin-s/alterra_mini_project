@@ -21,6 +21,7 @@ function EditModal(props) {
         plantDepth: props.data.plantDepth,
         plantGermination: props.data.plantGermination,
         plantHarvest: props.data.plantHarvest,
+        //plantImage: props.data.plantImage,
       });
 
     const handleChange = (event) => {
@@ -178,6 +179,7 @@ function EditModal(props) {
                 <input
                     type='file'
                     onChange={(event) => setPlantImage(event.target.files[0])}
+                    value={update.plantImage}
                     className='form-control'
                 />
                 </div>
