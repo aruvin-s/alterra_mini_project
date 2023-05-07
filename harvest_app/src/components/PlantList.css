@@ -1,0 +1,15 @@
+#plant-image {
+    width: 100px;
+    height: 100px;
+}
+
+
+#table-head {
+    background-color: #27AD60 !important;
+    color: #FFF;
+}
+
+#admin-table {
+    border-radius: 6px !important;
+    font-weight: 500;
+}
