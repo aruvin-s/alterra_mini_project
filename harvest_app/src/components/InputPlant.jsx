@@ -117,6 +117,7 @@ function InputPlant() {
                 onChange={handleChange}
                 className='form-control'
                 name="plantName"
+                required
               />
             </div>
             <div className='form-group'>
@@ -127,7 +128,7 @@ function InputPlant() {
                 onChange={handleChange}
                 className='form-control'
                 name="plantDesc"
-                style={{whiteSpace: 'pre-line'}}
+                required
               />
             </div>
             <div className='form-group'>
@@ -138,7 +139,8 @@ function InputPlant() {
               name="plantSeason"
               aria-label="Floating label select example"
               value={data.plantSeason}
-              onChange={handleChange}>
+              onChange={handleChange}
+              required>
               <option selected>Choose the plant planting season</option>
               <option value="Warm">Warm</option>
               <option value="Cool">Cool</option>
@@ -152,7 +154,8 @@ function InputPlant() {
               name="plantSun"
               aria-label="Floating label select example"
               value={data.plantSun}
-              onChange={handleChange}>
+              onChange={handleChange}
+              required>
               <option selected>Choose the plant sun coverage</option>
               <option value="Full Sun">Full Sun</option>
               <option value="Part Sun">Part Sun</option>
@@ -169,6 +172,7 @@ function InputPlant() {
                   className='form-control'
                   aria-describedby="basic-addon2"
                   name="plantWatering"
+                  required
                 />
                 <span className="input-group-text" id="basic-addon2">times/week</span>
               </div>
@@ -183,6 +187,7 @@ function InputPlant() {
                   className='form-control'
                   aria-describedby="basic-addon2"
                   name="plantDepth"
+                  required
                 />
                 <span className="input-group-text" id="basic-addon2">inch</span>
               </div>
@@ -199,6 +204,7 @@ function InputPlant() {
                   className='form-control'
                   aria-describedby="basic-addon2"
                   name="plantSpacing"
+                  required
                 />
                 <span className="input-group-text" id="basic-addon2">inch</span>
               </div>
@@ -213,6 +219,7 @@ function InputPlant() {
                   className='form-control'
                   aria-describedby="basic-addon2"
                   name="plantGermination"
+                  required
                 />
                 <span className="input-group-text" id="basic-addon2">weeks</span>
               </div>
@@ -227,6 +234,7 @@ function InputPlant() {
                   className='form-control'
                   aria-describedby="basic-addon2"
                   name="plantHarvest"
+                  required
                 />
                 <span className="input-group-text" id="basic-addon2">weeks</span>
               </div>
@@ -237,6 +245,7 @@ function InputPlant() {
                 type='file'
                 onChange={(event) => setPlantImage(event.target.files[0])}
                 className='form-control'
+                required
               />
             </div>
           </div>

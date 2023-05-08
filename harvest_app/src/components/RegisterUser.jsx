@@ -5,11 +5,19 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import logoHarvest from "../assets/PageCover.png"
 import './SignIn.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function RegisterUser() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState(false);
+
+  const showToastMessage = () => {
+    toast.success('Account succesfully registered!', {
+        position: toast.POSITION.TOP_RIGHT
+    });
+  };
 
   const navigate = useNavigate();
 
@@ -24,6 +32,7 @@ function RegisterUser() {
     .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        showToastMessage();
         navigateToLogin();
     })
     .catch((error) => {
@@ -68,6 +77,7 @@ function RegisterUser() {
                 Already have an account? <button type="button" className="btn btn-link" onClick={navigateToLogin}>Login</button>
             </div>
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>
