@@ -4,6 +4,7 @@ import NavbarAdmin from '../components/NavbarAdmin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
 import './style.css'
+import Footer from '.././components/Footer';
 
 
 function ViewPlantAdmin() {
@@ -24,7 +25,10 @@ function ViewPlantAdmin() {
             <div className='container'>
                 <button className='btn btn-primary mb-3' onClick={navigateToAdd}> Add New Plant</button>
             </div>
-            <PlantList />
+            <div>
+                <PlantList />
+            </div>
+            <Footer />
         </div>
     )
 }

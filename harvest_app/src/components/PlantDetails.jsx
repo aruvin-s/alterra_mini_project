@@ -11,10 +11,20 @@ import iconPlantSpacing from "../assets/plantSpacingIcon.png"
 import iconPlantDepth from "../assets/plantDepthIcon.png"
 import iconPlantGerm from "../assets/plantGermIcon.png"
 import iconPlantHarvest from "../assets/plantHarvestIcon.png"
+import { useAtom, atom } from 'jotai';
+import { useNavigate } from "react-router-dom";
+
+export const plantAtom = atom(null);
 
 function PlantDetails() {
   const [plant, setPlant] = useState(null);
   const { id } = useParams();
+  const [plantDataAtom, setPlantDataAtom] = useAtom(plantAtom);
+
+  const navigate = useNavigate();
+  const navigateToTracker = () => {
+        navigate('/calendars');
+  };
   
   useEffect(() => {
     async function fetchPlant() {
@@ -30,6 +40,11 @@ function PlantDetails() {
     fetchPlant();
   }, [id]);
 
+  const handleAdd = () => {
+    setPlantDataAtom(plant);
+    navigateToTracker();
+  }
+
   if (!plant) {
     return <div>Loading...</div>;
   }
@@ -37,7 +52,7 @@ function PlantDetails() {
   return (
     <div className='container mt-4'>
     <h2 className='text-center' id='detail-title'>{plant.plantName}</h2>
-    <div className='d-flex mt-2 mt-4'>
+    <div className='d-flex mt-4'>
       <div id='hero-left'>
           <img id='details-image' src={plant.plantImage} alt='Plant'></img>
         </div>
@@ -106,7 +121,8 @@ function PlantDetails() {
         </div>
         </div>
     </div>
-      <div className='mt-5'>
+    <button className='btn btn-success mt-4' onClick={handleAdd}>Add this plant to calendar</button>
+      <div className='mt-4'>
         <h2 id='sub-title'>How to Plant</h2>
         <p>{plant.plantDesc}</p>
       </div>

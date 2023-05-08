@@ -7,7 +7,7 @@ import { useAtom, atom } from 'jotai';
 import logoHarvest from "../assets/PageCover.png"
 import './SignIn.css';
 
-export const userAtom = atom(null);
+export const userAtom = atom(localStorage.getItem('userEmail') ?? null);
 
 function SignIn() {
   const [password, setPassword] = useState('');
@@ -34,6 +34,7 @@ function SignIn() {
     .then((userCredential) => {
         // Signed in 
         setUser(userCredential.user.email.toLowerCase());
+        localStorage.setItem('userEmail', userCredential.user.email.toLowerCase());
         const user = userCredential.user.email.toLowerCase();
         console.log(user);
         if (user == "wiraprathamaalvin@gmail.com") {

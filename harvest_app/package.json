@@ -10,9 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.6",
+    "@fullcalendar/daygrid": "^6.1.6",
+    "@fullcalendar/react": "^6.1.6",
     "bootstrap": "^5.2.3",
     "firebase": "^9.21.0",
+    "fullcalendar": "^6.1.6",
     "jotai": "^2.0.4",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",

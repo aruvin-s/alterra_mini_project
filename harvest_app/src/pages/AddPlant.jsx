@@ -1,6 +1,7 @@
 import React from 'react'
 import InputPlant from '.././components/InputPlant';
 import NavbarAdmin from '../components/NavbarAdmin';
+import Footer from '.././components/Footer';
 
 function AddPlant() {
     return (
@@ -8,7 +9,10 @@ function AddPlant() {
         <div>
             <NavbarAdmin />
         </div>
+        <div>
             <InputPlant />
+        </div>
+            <Footer/>  
         </div>
     )
 }

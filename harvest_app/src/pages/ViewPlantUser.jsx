@@ -3,6 +3,7 @@ import CardPlant from '../components/CardPlant';
 import NavbarUser from '../components/NavbarUser';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css'
+import Footer from '.././components/Footer';
 
 
 function ViewPlant() {
@@ -18,7 +19,10 @@ function ViewPlant() {
             <p className='text-center' id='page-subtitle'>
                 Pick your plant to start farming
             </p>
+            <div>
                 <CardPlant/>
+            </div>
+            <Footer />
         </div>
     )
 }
