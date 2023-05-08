@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useAtom, atom } from 'jotai';
 import logoHarvest from "../assets/PageCover.png"
 import './SignIn.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const userAtom = atom(localStorage.getItem('userEmail') ?? null);
 
@@ -14,6 +16,12 @@ function SignIn() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState(false);
   const [user, setUser] = useAtom(userAtom);
+
+  const showToastMessage = () => {
+    toast.error('Wrong email or password!', {
+        position: toast.POSITION.TOP_RIGHT
+    });
+  };
 
   const navigate = useNavigate();
   const navigateToListAdmin = () => {
@@ -46,6 +54,7 @@ function SignIn() {
     })
     .catch((error) => {
         setError(true);
+        showToastMessage();
     });
   };
 
@@ -80,12 +89,12 @@ function SignIn() {
             </div>
             <div className="d-grid">
                 <button type='submit' className='btn btn-primary mt-3'>Login</button>
-                {error && <span>Wrong email or password!</span>}
             </div>
             <div className='text-center mt-2'>
                 Doesnt have account? <button type="button" className="btn btn-link" onClick={navigateToRegister}>Register</button>
             </div>
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>
