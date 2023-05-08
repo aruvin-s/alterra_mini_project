@@ -4,7 +4,7 @@ import NavbarAdmin from '.././components/NavbarAdmin';
 import Footer from '.././components/Footer';
 import { useAtom } from 'jotai';
 import { userAtom } from '../components/SignIn';
-import logoHero from "../assets/Hero.png"
+import logoHero from "../assets/hero.png"
 import { useNavigate } from "react-router-dom";
 import './style.css'
 
