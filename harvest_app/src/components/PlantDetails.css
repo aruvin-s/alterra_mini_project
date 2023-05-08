@@ -1,0 +1,30 @@
+#details-image {
+    width: 440px;
+    height: 344px;
+    border-radius: 6px;
+}
+
+#detail-title {
+    font-weight: 800;
+    color: #27AD60;
+}
+
+#sub-title {
+    font-weight: 800;
+    color: #27AD60;
+}
+
+.plant-icon {
+    width: 70px;
+    height: 62px;
+}
+
+b {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+p {
+    font-weight: 400;
+    font-size: 16px;
+}
