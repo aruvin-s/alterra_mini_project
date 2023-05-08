@@ -14,6 +14,18 @@ function NavbarUser() {
     navigate('/register');
   };
 
+  const navigateToLogin = () => {
+    navigate('/login');
+  };
+
+  const navigateToList = () => {
+    navigate('/list');
+  };
+
+  const navigateToCalendars = () => {
+    navigate('/calendars');
+  }
+
   const navigateToHome = () => {
     navigate('/');
   };
@@ -34,13 +46,13 @@ function NavbarUser() {
             <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                 <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/">Home</a>
+                <a className="nav-link" aria-current="page" onClick={navigateToHome}>Home</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href='/list'>Plant</a>
+                <a className="nav-link" onClick={navigateToList}>Plant</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href='/calendars'>My Plant Calendar</a>
+                <a className="nav-link" onClick={navigateToCalendars}>My Plant Calendar</a>
                 </li>
             </ul>
             {user ? (
@@ -51,7 +63,7 @@ function NavbarUser() {
                 ) : (
                   <ul className='navbar-nav d-flex justify-content-end align-items-center'>
                     <li className="nav-item">
-                    <a className="nav-link" href='/login'>Login</a>
+                    <a className="nav-link" onClick={navigateToLogin}>Login</a>
                     </li>
                     <li className="nav-item">
                     <button className="btn btn-success btn-sm" onClick={navigateToRegister}>Sign Up</button>

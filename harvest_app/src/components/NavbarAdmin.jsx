@@ -15,6 +15,22 @@ function NavbarAdmin() {
     navigate('/register');
   };
 
+  const navigateToLogin = () => {
+    navigate('/login');
+  };
+
+  const navigateToView = () => {
+    navigate('/view');
+  };
+
+  const navigateToAdd = () => {
+    navigate('/add');
+  };
+
+  const navigateToCalendars = () => {
+    navigate('/calendars');
+  };
+
   const navigateToHome = () => {
     navigate('/');
   };
@@ -38,13 +54,13 @@ function NavbarAdmin() {
                 <a className="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href='/view'>Plant List</a>
+                <a className="nav-link" onClick={navigateToView}>Plant List</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link"  href='/add'>Add Plant</a>
+                <a className="nav-link"  onClick={navigateToAdd}>Add Plant</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href='/calendars'>My Plant Calendar</a>
+                <a className="nav-link" onClick={navigateToCalendars}>My Plant Calendar</a>
                 </li>
             </ul>
             {user ? (
@@ -56,7 +72,7 @@ function NavbarAdmin() {
                 ) : (
                   <ul className='navbar-nav d-flex justify-content-end align-items-center'>
                     <li className="nav-item">
-                    <a className="nav-link" href='/login'>Login</a>
+                    <a className="nav-link" onClick={navigateToLogin}>Login</a>
                     </li>
                     <li className="nav-item">
                     <button className="btn btn-success btn-sm" onClick={navigateToRegister}>Sign Up</button>
