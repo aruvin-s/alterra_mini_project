@@ -7,13 +7,23 @@ import { userAtom } from './SignIn';
 import { useNavigate } from "react-router-dom";
 
 function NavbarUser() {
-  const [user] = useAtom(userAtom);
+  const [user, setUser] = useAtom(userAtom);
   const navigate = useNavigate();
 
   const navigateToRegister = () => {
     navigate('/register');
   };
 
+  const navigateToHome = () => {
+    navigate('/');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('userEmail');
+    setUser(null);
+    navigateToHome();
+  };
+  
   return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid mx-5">
@@ -22,7 +32,7 @@ function NavbarUser() {
             <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                 <li className="nav-item">
                 <a className="nav-link" aria-current="page" href="/">Home</a>
                 </li>
@@ -30,12 +40,13 @@ function NavbarUser() {
                 <a className="nav-link" href='/list'>Plant</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" >My Plant Calendar</a>
+                <a className="nav-link" href='/calendars'>My Plant Calendar</a>
                 </li>
             </ul>
             {user ? (
               <ul className='navbar-nav d-flex justify-content-end align-items-center'>
                   <li>Welcome, {user}</li>
+                    <button type='button' className='btn btn-danger ms-2' onClick={handleLogout}>Log Out</button>
                   </ul>
                 ) : (
                   <ul className='navbar-nav d-flex justify-content-end align-items-center'>

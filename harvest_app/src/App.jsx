@@ -7,6 +7,7 @@ import ViewPlantUser from './pages/ViewPlantUser';
 import AddPlant from './pages/AddPlant';
 import Register from "./pages/Register";
 import UserPlantDetails from './pages/UserPlantDetails';
+import Tracker from "./pages/Tracker";
 import Home from './pages/Home';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/list" element={<ViewPlantUser />} />
           <Route path="/register" element={<Register />} />
           <Route exact path='/plants/:id' element={<UserPlantDetails/>} />
+          <Route path='/calendars' element={<Tracker/>} />
         </Routes>
       </div>
     </BrowserRouter>
