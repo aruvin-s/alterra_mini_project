@@ -6,6 +6,8 @@ import { db, storage } from "../firebase"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import './InputPlant.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function InputPlant() {
@@ -25,6 +27,12 @@ function InputPlant() {
   const navigate = useNavigate();
   const navigateToList = () => {
         navigate('/view');
+  };
+
+  const showToastMessage = () => {
+    toast.success('Plant data successfully submitted!', {
+        position: toast.POSITION.TOP_RIGHT
+    });
   };
 
 
@@ -75,7 +83,7 @@ function InputPlant() {
       console.log(err);
     }
 
-    alert("Data successfully submitted");
+    showToastMessage();
 
     setData({
       plantName:'',
@@ -119,6 +127,7 @@ function InputPlant() {
                 onChange={handleChange}
                 className='form-control'
                 name="plantDesc"
+                style={{whiteSpace: 'pre-line'}}
               />
             </div>
             <div className='form-group'>
@@ -239,6 +248,7 @@ function InputPlant() {
             <div className="d-grid">
                 <button type='submit' className='btn btn-primary mt-3'>Submit</button>
                 <button className="btn btn-success mt-2" onClick={navigateToList}>View all plant</button>
+                <ToastContainer />
             </div>
           </form>
         </div>

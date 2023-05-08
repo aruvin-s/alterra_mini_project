@@ -9,10 +9,18 @@ import moment from 'moment';
 import { useAtom } from 'jotai';
 import { plantAtom } from './PlantDetails';
 import React, { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function CalendarTracker() {
     const [plantData] = useAtom(plantAtom);
     const [events, setEvents] = useState([]);
+
+    const showToastMessage = () => {
+        toast.success('Plant successfully added!', {
+            position: toast.POSITION.TOP_RIGHT
+        });
+    };
 
     useEffect(() => {
         if (plantData) {
@@ -59,6 +67,7 @@ function CalendarTracker() {
         try {
           const res = await addDoc(collection(db, "plantsTracker"), { events });
           console.log("Events added to database:", res);
+          showToastMessage();
         } catch (err) {
           console.log(err);
         }
@@ -73,6 +82,7 @@ function CalendarTracker() {
         events={events}
         eventContent={renderEventContent}
       />
+      <ToastContainer />
       <button className='btn btn-primary mt-2 mb-5' onClick={saveData}> Save Calendar</button>
     </div>
   );

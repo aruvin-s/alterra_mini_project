@@ -4,10 +4,18 @@ import { db, storage } from "../firebase"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EditModal from "./EditModal"
 import './PlantList.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function PlantList() {
     const [data, setData] = useState([]);
+
+    const showToastMessage = () => {
+      toast.success('Plant data successfully deleted!', {
+          position: toast.POSITION.TOP_RIGHT
+      });
+  };
 
     useEffect(()=> {
         const unsub = onSnapshot(
@@ -34,6 +42,7 @@ function PlantList() {
         try {
           await deleteDoc(doc(db, "plants", id));
           setData(data.filter((item) => item.id !== id));
+          showToastMessage();
         } catch (err) {
           console.log(err);
         }
@@ -41,6 +50,7 @@ function PlantList() {
 
     return (
         <div className='container'>
+        <ToastContainer />
             <table className="table table-bordered" id='admin-table'>
             <thead className='text-center' id='table-head'>
                 <tr>
